@@ -28,10 +28,10 @@ const experiences = [
 
 export const Experience = () => {
   return (
-    <section className="py-20 px-4" id="experience">
+    <section className="py-20 px-4 bg-black" id="experience">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center gap-3 mb-12">
-          <div className="p-3 rounded-xl bg-primary/10">
+          <div className="p-3 rounded-sm bg-primary/10 border border-primary/20">
             <Briefcase className="w-6 h-6 text-primary" />
           </div>
           <h2 className="text-4xl font-bold">Experience</h2>
@@ -41,14 +41,14 @@ export const Experience = () => {
           {experiences.map((exp, index) => (
             <Card 
               key={index} 
-              className="p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-l-4 border-l-primary"
+              className="p-6 bg-card hover:bg-card/80 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-l-4 border-l-primary shadow-lg"
             >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                 <div>
                   <h3 className="text-2xl font-bold mb-1">{exp.role}</h3>
-                  <p className="text-lg text-primary font-medium">{exp.company}</p>
+                  <p className="text-lg text-primary font-semibold">{exp.company}</p>
                 </div>
-                <Badge variant="secondary" className="w-fit">
+                <Badge variant="secondary" className="w-fit bg-secondary/80 text-secondary-foreground border border-muted">
                   {exp.period}
                 </Badge>
               </div>
@@ -59,7 +59,7 @@ export const Experience = () => {
               
               <div className="flex flex-wrap gap-2">
                 {exp.technologies.map((tech, i) => (
-                  <Badge key={i} variant="outline" className="text-xs">
+                  <Badge key={i} variant="outline" className="text-xs border-muted bg-muted/20 hover:bg-muted/40 transition-colors">
                     {tech}
                   </Badge>
                 ))}
