@@ -1,12 +1,23 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Hero } from "@/components/Hero";
+import { Experience } from "@/components/Experience";
+import { Skills } from "@/components/Skills";
+import { Projects } from "@/components/Projects";
+import { Contact } from "@/components/Contact";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      <Hero />
+      <Experience />
+      <Skills />
+      <Projects />
+      <Contact />
+      
+      <footer className="py-8 px-4 border-t">
+        <div className="max-w-6xl mx-auto text-center text-muted-foreground">
+          <p>© 2024 Your Name. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 };
