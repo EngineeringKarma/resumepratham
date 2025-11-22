@@ -27,7 +27,7 @@ export const Navigation = () => {
     >
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         <div className="text-2xl font-bold text-primary">
-          YN
+          RESUME
         </div>
         
         <div className="hidden md:flex gap-8">
@@ -43,13 +43,6 @@ export const Navigation = () => {
             className="text-foreground hover:text-primary transition-colors relative group"
           >
             Skills
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-          </button>
-          <button
-            onClick={() => scrollToSection("projects")}
-            className="text-foreground hover:text-primary transition-colors relative group"
-          >
-            Projects
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
           </button>
           <button
