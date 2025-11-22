@@ -1,0 +1,5 @@
+<audio
+  ref={audioRef}
+  src="/resume-intro.mp3"
+  preload="auto"
+/>
