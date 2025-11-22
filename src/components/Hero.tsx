@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Mail, Download, Linkedin, Github } from "lucide-react";
+import { Mail, Linkedin, Github } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
 export const Hero = () => {
@@ -25,12 +25,13 @@ export const Hero = () => {
         </h1>
         
         <p className="text-2xl md:text-3xl text-muted-foreground font-light">
-          Artificial Intelligence Model Trainer
+          AI Model Trainer | Creative Designer | Social Media Enthusiast
         </p>
         
         <p className="max-w-2xl mx-auto text-lg text-muted-foreground leading-relaxed">
-          Seasoned Artificial Intelligence Model Trainer specializing in transforming raw data into predictive insights. 
-          Skilled in Probability Statistics and SQL Database Coding, with a strong foundation in Python and knowledge in stock markets and financial operations.
+          Passionate about blending artificial intelligence with creative design to transform raw data into compelling visual stories. 
+          Experienced in AI model training, data analysis, and content creation with expertise in photography, videography, and trend research. 
+          Skilled in identifying top-performing content patterns and adapting brand strategies for maximum social media impact.
         </p>
         
         <div className="flex flex-wrap gap-4 justify-center pt-4">
@@ -39,10 +40,6 @@ export const Hero = () => {
               <Mail className="w-4 h-4" />
               Get in Touch
             </a>
-          </Button>
-          <Button size="lg" variant="secondary" className="gap-2 hover:scale-105 transition-transform">
-            <Download className="w-4 h-4" />
-            Download CV
           </Button>
         </div>
         
