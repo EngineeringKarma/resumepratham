@@ -1,66 +1,56 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-interface IntroAnimationProps {
-  onComplete?: () => void;
-}
+type IntroAnimationProps = {
+  onComplete: () => void;
+};
 
-/**
- * Fullscreen Netflix-style intro for "RESUME"
- * Plays once, then calls onComplete and unmounts.
- */
-const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
-  const [visible, setVisible] = useState(true);
+export const IntroAnimation = ({ onComplete }: IntroAnimationProps) => {
+  const [show, setShow] = useState(true);
 
   useEffect(() => {
-    // Total duration: 3.8s (ribbons + logo + fade out)
+    // total duration ~3.8s
     const timer = setTimeout(() => {
-      setVisible(false);
-      onComplete?.();
+      setShow(false);
+      onComplete();
     }, 3800);
 
     return () => clearTimeout(timer);
   }, [onComplete]);
 
-  if (!visible) return null;
+  if (!show) return null;
 
   return (
-    <div className="intro-overlay">
-      {/* Light trails */}
-      <div className="light-trail trail-1" />
-      <div className="light-trail trail-2" />
-      <div className="light-trail trail-3" />
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
+      <div className="intro-overlay w-full h-full flex items-center justify-center overflow-hidden">
+        {/* Light trails */}
+        <div className="light-trail trail-1" />
+        <div className="light-trail trail-2" />
+        <div className="light-trail trail-3" />
 
-      {/* Glow behind logo */}
-      <div className="logo-glow" />
+        {/* Glow behind logo */}
+        <div className="logo-glow" />
 
-      {/* RESUME logo */}
-      <h1 className="resume-logo">
-        <span>R</span>
-        <span>E</span>
-        <span>S</span>
-        <span>U</span>
-        <span>M</span>
-        <span>E</span>
-      </h1>
+        {/* RESUME logo */}
+        <h1 className="resume-logo">
+          <span>R</span>
+          <span>E</span>
+          <span>S</span>
+          <span>U</span>
+          <span>M</span>
+          <span>E</span>
+        </h1>
+      </div>
 
-      {/* Styles scoped to this component */}
+      {/* component-scoped styles */}
       <style>{`
-        /* Fullscreen overlay */
         .intro-overlay {
-          position: fixed;
-          inset: 0;
-          z-index: 9999;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          overflow: hidden;
+          position: relative;
           background: radial-gradient(circle at top, #202020 0, #000 55%, #000 100%);
           font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
           animation: fadeOut 0.6s ease-out forwards;
           animation-delay: 3.2s; /* fade near the end */
         }
 
-        /* Vignette */
         .intro-overlay::after {
           content: "";
           position: absolute;
@@ -70,7 +60,6 @@ const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
           opacity: 0.75;
         }
 
-        /* Light trails (Netflix-ish ribbons) */
         .light-trail {
           position: absolute;
           width: 140%;
@@ -129,7 +118,6 @@ const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
           }
         }
 
-        /* Glow behind logo */
         .logo-glow {
           position: absolute;
           width: 320px;
@@ -158,7 +146,6 @@ const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
           }
         }
 
-        /* RESUME logo styling */
         .resume-logo {
           position: relative;
           z-index: 2;
@@ -183,7 +170,6 @@ const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
           display: inline-block;
           opacity: 0;
           transform: translateY(26px);
-          /* Each letter animates in after logo base starts */
           animation: letterUp 0.7s ease-out forwards;
         }
 
@@ -231,7 +217,6 @@ const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
           }
         }
 
-        /* Fade out of entire overlay */
         @keyframes fadeOut {
           from {
             opacity: 1;
@@ -242,14 +227,12 @@ const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
           }
         }
 
-        /* Basic mobile friendliness */
         @media (max-width: 640px) {
           .resume-logo {
             letter-spacing: 0.2em;
           }
         }
 
-        /* Optional: respect reduced motion */
         @media (prefers-reduced-motion: reduce) {
           .light-trail,
           .logo-glow,
@@ -266,6 +249,8 @@ const IntroAnimation: React.FC<IntroAnimationProps> = ({ onComplete }) => {
   );
 };
 
-export default IntroAnimation;
+
+
+
 
 
