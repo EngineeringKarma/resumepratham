@@ -1,26 +1,26 @@
 import { Card } from "@/components/ui/card";
-import { Code, Palette, Database, Cloud } from "lucide-react";
+import { Code, Palette, Database, Brain } from "lucide-react";
 
 const skillCategories = [
   {
-    icon: Code,
-    title: "Frontend Development",
-    skills: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Vue.js"]
+    icon: Brain,
+    title: "Technical Skills",
+    skills: ["Python", "SQL", "Machine Learning", "Artificial Intelligence", "Algorithm", "Java", "Unreal Engine", "Probability Statistics", "Data Programming"]
   },
   {
     icon: Database,
-    title: "Backend Development",
-    skills: ["Node.js", "Python", "PostgreSQL", "MongoDB", "REST APIs"]
-  },
-  {
-    icon: Cloud,
-    title: "DevOps & Cloud",
-    skills: ["AWS", "Docker", "CI/CD", "Kubernetes", "Git"]
+    title: "Data & Analysis",
+    skills: ["SQL Database Coding", "Data Manipulation", "Feature Selection", "Predictive Analytics", "Stocks and Market"]
   },
   {
     icon: Palette,
-    title: "Design & Tools",
-    skills: ["Figma", "UI/UX", "Responsive Design", "Agile", "Testing"]
+    title: "Creative and Design Skills",
+    skills: ["Basic Photography & Videography", "Trend Research & Adaptation", "Basic Brand Consistency", "Identifying Top-Performing Content & Patterns", "Canva"]
+  },
+  {
+    icon: Code,
+    title: "Strengths",
+    skills: ["Adaptability", "Flexibility", "Problem Solving", "Team Collaboration", "Innovation"]
   }
 ];
 

@@ -17,7 +17,7 @@ export const Contact = () => {
               <Mail className="w-6 h-6 text-primary" />
             </div>
             <h3 className="font-bold mb-2">Email</h3>
-            <p className="text-sm text-muted-foreground">your.email@example.com</p>
+            <p className="text-sm text-muted-foreground">prathameshbhandare2006@gmail.com</p>
           </Card>
           
           <Card className="p-6 bg-card hover:bg-card/80 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 shadow-lg border border-muted/30">
@@ -25,7 +25,7 @@ export const Contact = () => {
               <Phone className="w-6 h-6 text-primary" />
             </div>
             <h3 className="font-bold mb-2">Phone</h3>
-            <p className="text-sm text-muted-foreground">+1 (555) 123-4567</p>
+            <p className="text-sm text-muted-foreground">+91 7977332096</p>
           </Card>
           
           <Card className="p-6 bg-card hover:bg-card/80 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 shadow-lg border border-muted/30">
@@ -33,7 +33,7 @@ export const Contact = () => {
               <MapPin className="w-6 h-6 text-primary" />
             </div>
             <h3 className="font-bold mb-2">Location</h3>
-            <p className="text-sm text-muted-foreground">San Francisco, CA</p>
+            <p className="text-sm text-muted-foreground">Panvel, India 410206</p>
           </Card>
         </div>
         
