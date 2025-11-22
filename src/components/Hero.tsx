@@ -45,12 +45,12 @@ export const Hero = () => {
         
         <div className="flex gap-4 justify-center pt-8">
           <Button size="icon" variant="ghost" className="rounded-full hover:bg-muted/30 hover:scale-110 transition-all" asChild>
-            <a href="https://www.linkedin.com/in/prathamesh-bhandare" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/prathamesh-bhandare-b74257307/" target="_blank" rel="noopener noreferrer">
               <Linkedin className="w-5 h-5" />
             </a>
           </Button>
           <Button size="icon" variant="ghost" className="rounded-full hover:bg-muted/30 hover:scale-110 transition-all" asChild>
-            <a href="https://github.com/prathameshbhandare" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/EngineeringKarma" target="_blank" rel="noopener noreferrer">
               <Github className="w-5 h-5" />
             </a>
           </Button>
