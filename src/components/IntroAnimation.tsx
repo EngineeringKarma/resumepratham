@@ -7,7 +7,7 @@ export const IntroAnimation = ({ onComplete }: { onComplete: () => void }) => {
     const timer = setTimeout(() => {
       setShow(false);
       onComplete();
-    }, 3000);
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, [onComplete]);
@@ -15,50 +15,55 @@ export const IntroAnimation = ({ onComplete }: { onComplete: () => void }) => {
   if (!show) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black animate-fade-out" style={{ animationDelay: "2.5s" }}>
-      <div className="relative overflow-hidden">
-        <div className="ribbon-sweep" />
-        <h1 className="text-6xl md:text-8xl font-bold text-white tracking-wider opacity-0 animate-reveal">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black animate-fade-out" style={{ animationDelay: "4.5s" }}>
+      <div className="relative">
+        <h1 className="text-8xl md:text-9xl font-black text-white tracking-widest netflix-logo">
           RESUME
         </h1>
       </div>
       
       <style>{`
-        .ribbon-sweep {
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, #E50914, transparent);
-          animation: sweep 1.5s ease-in-out forwards;
-          filter: blur(20px);
+        .netflix-logo {
+          animation: netflixIntro 4s cubic-bezier(0.87, 0, 0.13, 1) forwards;
+          text-shadow: 
+            0 0 20px rgba(229, 9, 20, 0.8),
+            0 0 40px rgba(229, 9, 20, 0.6),
+            0 0 60px rgba(229, 9, 20, 0.4),
+            0 10px 30px rgba(0, 0, 0, 0.8);
+          transform-origin: center;
         }
         
-        @keyframes sweep {
-          0% {
-            left: -100%;
-          }
-          100% {
-            left: 100%;
-          }
-        }
-        
-        @keyframes reveal {
+        @keyframes netflixIntro {
           0% {
             opacity: 0;
+            transform: scale(0.3);
+            filter: brightness(0.5);
           }
-          50% {
+          20% {
             opacity: 0;
+            transform: scale(0.3);
+            filter: brightness(0.5);
+          }
+          40% {
+            opacity: 1;
+            transform: scale(1.15);
+            filter: brightness(1.5);
+          }
+          60% {
+            opacity: 1;
+            transform: scale(0.95);
+            filter: brightness(1.2);
+          }
+          80% {
+            opacity: 1;
+            transform: scale(1);
+            filter: brightness(1);
           }
           100% {
             opacity: 1;
-            text-shadow: 0 0 30px rgba(229, 9, 20, 0.5);
+            transform: scale(1);
+            filter: brightness(1);
           }
-        }
-        
-        .animate-reveal {
-          animation: reveal 2.5s ease-out forwards;
         }
         
         .animate-fade-out {
