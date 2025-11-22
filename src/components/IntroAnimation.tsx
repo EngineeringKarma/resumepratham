@@ -5,157 +5,116 @@ type IntroAnimationProps = {
 };
 
 export const IntroAnimation = ({ onComplete }: IntroAnimationProps) => {
-  const [show, setShow] = useState(true);
+  const [visible, setVisible] = useState(true);
+
+  // Total duration of intro (ms)
+  const INTRO_DURATION = 2600;
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShow(false);
+      setVisible(false);
       onComplete();
-    }, 3500); // total intro time
+    }, INTRO_DURATION);
 
     return () => clearTimeout(timer);
   }, [onComplete]);
 
-  if (!show) return null;
+  if (!visible) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
-      <div className="nf-intro">
-        <div className="nf-letter-wrapper">
-          <span className="nf-letter">R</span>
-          {/* diagonal light / shadow for “Netflix vibe” */}
-          <div className="nf-diagonal" />
-          <div className="nf-glow" />
+      <div className="resume-intro">
+        <div className="resume-intro-text">
+          <span>R</span>
+          <span>E</span>
+          <span>S</span>
+          <span>U</span>
+          <span>M</span>
+          <span>E</span>
         </div>
       </div>
 
       <style>{`
-        .nf-intro {
+        .resume-intro {
           position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           width: 100vw;
           height: 100vh;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: #000;
           overflow: hidden;
+          animation: intro-overlay-fade 2.6s ease-out forwards;
         }
 
-        .nf-letter-wrapper {
-          position: relative;
-          width: 260px;
-          height: 260px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transform-origin: center;
-          animation: nf-zoom-in 2.8s ease-in forwards;
-          animation-delay: 0.3s;
-        }
-
-        .nf-letter {
-          position: relative;
+        .resume-intro-text {
           font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-          font-weight: 900;
-          font-size: 220px;
-          line-height: 1;
-          color: #e50914;
-          text-shadow:
-            0 0 24px rgba(229, 9, 20, 0.9),
-            0 0 44px rgba(229, 9, 20, 0.75),
-            0 0 64px rgba(229, 9, 20, 0.55),
-            0 14px 36px rgba(0, 0, 0, 0.95);
-          z-index: 2;
+          font-weight: 800;
+          font-size: clamp(2.8rem, 8vw, 5rem);
+          letter-spacing: 0.35em;
+          text-transform: uppercase;
+          color: #ffffff;
+          display: inline-flex;
+          position: relative;
         }
 
-        /* Diagonal overlay to mimic Netflix’s beveled look */
-        .nf-diagonal {
+        .resume-intro-text::after {
+          /* soft glow behind the word */
+          content: "";
           position: absolute;
-          inset: 0;
-          transform-origin: top right;
-          transform: skewX(-18deg) translateX(8%);
-          background: linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, 0.3),
-            rgba(0, 0, 0, 0.8)
-          );
-          mix-blend-mode: multiply;
-          z-index: 3;
-          pointer-events: none;
+          inset: 30%;
+          border-radius: 999px;
+          background: radial-gradient(circle, rgba(255, 255, 255, 0.18), transparent 70%);
+          filter: blur(12px);
+          z-index: -1;
         }
 
-        /* Soft radial glow behind the R */
-        .nf-glow {
-          position: absolute;
-          width: 360px;
-          height: 360px;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(229, 9, 20, 0.55), transparent 60%);
-          filter: blur(10px);
+        .resume-intro-text span {
+          display: inline-block;
           opacity: 0;
-          animation: nf-glow-in 1.8s ease-out forwards;
-          animation-delay: 0.6s;
-          z-index: 1;
+          transform: translateY(20px) scale(0.9);
+          animation: letter-in 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
         }
 
-        @keyframes nf-zoom-in {
-          0% {
-            transform: scale(1) translateY(10px);
-            opacity: 0;
-            filter: brightness(0.4);
-          }
-          30% {
-            transform: scale(1.3) translateY(0);
-            opacity: 1;
-            filter: brightness(1.6);
-          }
-          60% {
-            transform: scale(0.95) translateY(0);
-            filter: brightness(1.2);
-          }
-          100% {
-            transform: scale(1) translateY(0);
-            filter: brightness(1);
-          }
-        }
+        .resume-intro-text span:nth-child(1) { animation-delay: 0.1s; }
+        .resume-intro-text span:nth-child(2) { animation-delay: 0.18s; }
+        .resume-intro-text span:nth-child(3) { animation-delay: 0.26s; }
+        .resume-intro-text span:nth-child(4) { animation-delay: 0.34s; }
+        .resume-intro-text span:nth-child(5) { animation-delay: 0.42s; }
+        .resume-intro-text span:nth-child(6) { animation-delay: 0.5s; }
 
-        @keyframes nf-glow-in {
+        @keyframes letter-in {
           0% {
             opacity: 0;
-            transform: scale(0.6);
+            transform: translateY(26px) scale(0.9);
+            filter: blur(6px);
           }
           60% {
             opacity: 1;
-            transform: scale(1.1);
+            transform: translateY(0) scale(1.05);
+            filter: blur(0);
           }
           100% {
-            opacity: 0.8;
-            transform: scale(1);
+            opacity: 1;
+            transform: translateY(0) scale(1);
           }
         }
 
-        /* Fade the whole overlay out at the end */
-        .fixed.inset-0.z-50 > .nf-intro {
-          animation: nf-fade-out 0.5s ease-out forwards;
-          animation-delay: 3s;
-        }
-
-        @keyframes nf-fade-out {
-          from { opacity: 1; }
-          to   { opacity: 0; visibility: hidden; }
+        @keyframes intro-overlay-fade {
+          0% {
+            opacity: 1;
+          }
+          80% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 0;
+            visibility: hidden;
+          }
         }
 
         @media (max-width: 640px) {
-          .nf-letter-wrapper {
-            width: 200px;
-            height: 200px;
-          }
-          .nf-letter {
-            font-size: 170px;
-          }
-          .nf-glow {
-            width: 280px;
-            height: 280px;
+          .resume-intro-text {
+            letter-spacing: 0.2em;
           }
         }
       `}</style>
