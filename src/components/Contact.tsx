@@ -36,11 +36,6 @@ export const Contact = () => {
             <p className="text-sm text-muted-foreground">Panvel, India 410206</p>
           </Card>
         </div>
-        
-        <Button size="lg" className="gap-2 hover:scale-105 transition-transform">
-          <Mail className="w-4 h-4" />
-          Send Message
-        </Button>
       </div>
     </section>
   );
